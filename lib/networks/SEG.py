@@ -129,11 +129,11 @@ class SEGNET(nn.Module):
 
 def update_model(model, data):
     model_dict = model.state_dict()
-    print('model keys')
-    print('=================================================')
-    for k, v in model_dict.items():
-        print(k)
-    print('=================================================')
+    # print('model keys')
+    # print('=================================================')
+    # for k, v in model_dict.items():
+    #     print(k)
+    # print('=================================================')
 
     if data is not None:
         # print('data keys')
