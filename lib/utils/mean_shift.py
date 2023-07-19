@@ -66,9 +66,9 @@ def connected_components(Z, epsilon, metric='cosine'):
             if torch.unique(cluster_labels[component_seeds]).shape[0] > 1:
                 temp = cluster_labels[component_seeds].cpu().numpy()
                 temp = temp[temp != -1]
-                label = torch.tensor(get_label_mode(temp))
+                label = torch.tensor(get_label_mode(temp)).to(cluster_labels.device)
             else:
-                label = torch.tensor(K)
+                label = torch.tensor(K).to(cluster_labels.device)
                 K += 1  # Increment number of clusters
 
             cluster_labels[component_seeds] = label
@@ -216,7 +216,7 @@ def mean_shift_smart_init(X, kappa, num_seeds=100, max_iters=10, metric='cosine'
 
     # assign zero to the largest cluster
     num = len(torch.unique(seed_cluster_labels))
-    count = torch.zeros(num, dtype=torch.long)
+    count = torch.zeros(num, dtype=torch.long).to(X.device)
     for i in range(num):
         count[i] = (cluster_labels == i).sum()
     label_max = torch.argmax(count)
