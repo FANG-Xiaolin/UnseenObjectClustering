@@ -7,11 +7,11 @@ from itertools import compress
 import torch
 
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import scipy
 import scipy.io
-# import cv2
-# from PIL import Image
+import cv2
+from PIL import Image
 
 
 def get_color_mask(object_index, nc=None):
